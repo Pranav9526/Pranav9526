@@ -1,0 +1,103 @@
+from tkinter import *
+from tkinter import Button
+
+window = Tk()
+
+window.geometry("390x360")
+window.configure(bg="black")
+
+equation = ""
+
+# funtion to dispaly the buttons on the panel
+
+def show(value):
+    global equation
+    equation += value
+    panel_field.config(text=equation)
+
+# function to clear the texts in the panel
+
+def clear():
+    global equation
+    equation = ""
+    panel_field.config(text=equation)
+
+# function to find the answer 
+
+def answer():
+    global equation
+    result = ""
+    if equation != "17161b":
+        try:
+            result = eval(equation)
+        except:
+            result = "error"
+            equation = ""
+        panel_field.config(text=result)
+
+
+window.title('Calculator')
+
+# creating the buttons
+# and to make the buttons displayed on the text input area when clicked
+
+divbut = Button(text="/", width=6, height=3, font=("Arial", 13, "bold"), command=lambda: show("/"))
+mulbut = Button(text="*", width=6, height=3, font=("Arial", 13, "bold"), command=lambda: show("*"))
+but7 = Button(text="7", height=3, width=6, font=("Arial", 13, "bold"), command=lambda: show("7"))
+but8 = Button(text="8", height=3, width=6, font=("Arial", 13, "bold"), command=lambda: show("8"))
+but9 = Button(text="9", height=3, width=6, font=("Arial", 13, "bold"), command=lambda: show("9"))
+but4 = Button(text="4", height=3, width=6, font=("Arial", 13, "bold"), command=lambda: show("4"))
+but5 = Button(text="5", height=3, width=6, font=("Arial", 13, "bold"), command=lambda: show("5"))
+but6 = Button(text="6", width=6, height=3, font=("Arial", 13, "bold"), command=lambda: show("6"))
+but1 = Button(text="1", height=3, width=6, font=("Arial", 13, "bold"), command=lambda: show("1"))
+but2 = Button(text="2", height=3, width=6, font=("Arial", 13, "bold"), command=lambda: show("2"))
+but3 = Button(text="3", height=3, width=6, font=("Arial", 13, "bold"), command=lambda: show("3"))
+subbut = Button(text="-", width=6, height=3, font=("Arial", 13, "bold"), command=lambda: show("-"))
+plusbut = Button(text="+", width=6, height=7, font=("Arial", 13, "bold"), command=lambda: show("+"))
+clrbut = Button(text="C", width=6, height=3, font=("Arial", 13, "bold"), command=lambda: clear())
+eqlbut = Button(text="=", width=13, height=3, bg="#3498DB", fg="white", font=("Arial", 13, "bold"),
+                command=lambda: answer())
+but0 = Button(text="0", width=13, height=3, font=("Arial", 13, "bold"), command=lambda: show("0"))
+dotbut = Button(text=".", width=6, height=3, font=("Arial", 13, "bold"), command=lambda: show("."))
+
+panel_field = Label(window, text="", bg="white", fg="black", font=("Elephant", 20, "bold"), anchor="e")
+panel_field.configure(bg="white")
+
+# place the buttons 
+panel_field.place(x=0, y=0, width=390, height=64)
+divbut.place(x=242, y=66)
+mulbut.place(x=314, y=138)
+but7.place(x=8, y=65)
+but8.place(x=80, y=65)
+but9.place(x=152, y=65)
+but4.place(x=8, y=138)
+but5.place(x=80, y=138)
+but6.place(x=152, y=138)
+but1.place(x=8, y=211)
+but2.place(x=80, y=211)
+but3.place(x=152, y=211)
+subbut.place(x=314, y=211)
+clrbut.place(x=314, y=65)
+plusbut.place(x=242, y=138)
+eqlbut.place(x=242, y=284)
+but0.place(x=8, y=284)
+dotbut.place(x=152, y=284)
+
+but1.configure(bd=3, bg="#2a2d36", fg="#fff")
+but2.configure(bd=3, bg="#2a2d36", fg="#fff")
+but3.configure(bd=3, bg="#2a2d36", fg="#fff")
+but4.configure(bd=3, bg="#2a2d36", fg="#fff")
+but5.configure(bd=3, bg="#2a2d36", fg="#fff")
+but6.configure(bd=3, bg="#2a2d36", fg="#fff")
+but7.configure(bd=3, bg="#2a2d36", fg="#fff")
+but8.configure(bd=3, bg="#2a2d36", fg="#fff")
+but9.configure(bd=3, bg="#2a2d36", fg="#fff")
+but0.configure(bd=3, bg="#2a2d36", fg="#fff")
+plusbut.configure(bd=3, bg="#2a2d36", fg="#fff")
+subbut.configure(bd=3, bg="#2a2d36", fg="#fff")
+mulbut.configure(bd=3, bg="#2a2d36", fg="#fff")
+divbut.configure(bd=3, bg="#2a2d36", fg="#fff")
+dotbut.configure(bd=3, bg="#2a2d36", fg="#fff")
+clrbut.configure(bd=3, bg="orange", fg="#fff")
+
+window.mainloop()
